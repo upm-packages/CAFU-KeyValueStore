@@ -1,10 +1,8 @@
 using System;
-using JetBrains.Annotations;
 using UniRx.Async;
 
-namespace CAFU.KeyValueStore.Application.Interface
+namespace CAFU.KeyValueStore.Domain.UseCase.Interface.Repository
 {
-    [PublicAPI]
     public interface IKeyValueStore
     {
         UniTask<T> Get<T>(string key, T defaultValue = default, Func<string, T> deserializeCallback = default);

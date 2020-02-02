@@ -1,5 +1,5 @@
 using System;
-using CAFU.KeyValueStore.Application.Interface;
+using CAFU.KeyValueStore.Domain.UseCase.Interface.Repository;
 using CAFU.KeyValueStore.Data.Repository.Interface.DataStore;
 using JetBrains.Annotations;
 using UniRx.Async;
