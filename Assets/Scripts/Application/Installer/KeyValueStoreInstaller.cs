@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
-using CAFU.KeyValueStore.Application.Interface;
 using CAFU.KeyValueStore.Application.Master;
+using CAFU.KeyValueStore.Data.DataStore.Implement;
 using CAFU.KeyValueStore.Data.Repository.Implement;
+using CAFU.KeyValueStore.Domain.UseCase.Interface.Repository;
 using JetBrains.Annotations;
 using Zenject;
 
@@ -38,7 +39,7 @@ namespace CAFU.KeyValueStore.Application.Installer
                 .BindInterfacesTo<KeyValueStoreHandler>()
                 .AsCached();
             container
-                .BindInterfacesTo<Data.DataStore.Implement.PlayerPrefs>()
+                .BindInterfacesTo<PlayerPrefs>()
                 .AsCached();
         }
     }
