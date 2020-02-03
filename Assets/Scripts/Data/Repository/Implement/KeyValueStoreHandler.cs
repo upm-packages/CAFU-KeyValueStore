@@ -11,7 +11,7 @@ namespace CAFU.KeyValueStore.Data.Repository.Implement
     internal class KeyValueStoreHandler : IKeyValueStore
     {
         [Inject]
-        public KeyValueStoreHandler(IAsyncGetter getter, IAsyncSetter setter, IAsyncChecker checker)
+        internal KeyValueStoreHandler(IAsyncGetter getter, IAsyncSetter setter, IAsyncChecker checker)
         {
             Getter = getter;
             Setter = setter;
