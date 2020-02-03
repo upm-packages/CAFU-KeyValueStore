@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using CAFU.KeyValueStore.Application.Installer;
+using CAFU.KeyValueStore.Application.Interface;
 using CAFU.KeyValueStore.Application.Master;
 using CAFU.KeyValueStore.Application.Utility;
-using CAFU.KeyValueStore.Domain.UseCase.Interface.Repository;
 using NUnit.Framework;
 using UniRx.Async;
 using UnityEngine;
