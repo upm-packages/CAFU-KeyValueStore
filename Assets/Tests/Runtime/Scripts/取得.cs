@@ -56,7 +56,7 @@ namespace CAFU.KeyValueStore
             PlayerPrefs.SetString(Key, "値を取得");
 
             yield return KeyValueStore
-                .Get<string>(Key)
+                .GetReferenceType<string>(Key)
                 .ToCoroutine(
                     x => Assert.That(x, Is.EqualTo("値を取得"))
                 );
@@ -71,16 +71,16 @@ namespace CAFU.KeyValueStore
             PlayerPrefs.SetString(Key + "String", "string value");
 
             yield return KeyValueStore
-                .Get<bool>(Key + "Bool")
+                .GetValueType<bool>(Key + "Bool")
                 .ToCoroutine(x => Assert.That(x, Is.True));
             yield return KeyValueStore
-                .Get<int>(Key + "Int")
+                .GetValueType<int>(Key + "Int")
                 .ToCoroutine(x => Assert.That(x, Is.EqualTo(2)));
             yield return KeyValueStore
-                .Get<float>(Key + "Float")
+                .GetValueType<float>(Key + "Float")
                 .ToCoroutine(x => Assert.That(x, Is.EqualTo(100.0f)));
             yield return KeyValueStore
-                .Get<string>(Key + "String")
+                .GetReferenceType<string>(Key + "String")
                 .ToCoroutine(x => Assert.That(x, Is.EqualTo("string value")));
         }
 
@@ -93,7 +93,7 @@ namespace CAFU.KeyValueStore
             PlayerPrefs.SetString(Key + "DateTime", Serializer.DateTime(dateTimeNow));
 
             yield return KeyValueStore
-                .Get(Key + "Custom", deserializeCallback: Deserializer.Default<CustomClass>)
+                .GetReferenceType(Key + "Custom", deserializeCallback: Deserializer.Default<CustomClass>)
                 .ToCoroutine(
                     x =>
                     {
@@ -102,7 +102,7 @@ namespace CAFU.KeyValueStore
                     }
                 );
             yield return KeyValueStore
-                .Get(Key + "DateTime", deserializeCallback: Deserializer.DateTime)
+                .GetValueType(Key + "DateTime", deserializeCallback: Deserializer.DateTime)
                 .ToCoroutine(
                     x =>
                     {
@@ -120,7 +120,7 @@ namespace CAFU.KeyValueStore
         public IEnumerator D_デフォルト値を取得できる()
         {
             yield return KeyValueStore
-                .Get(Key, "デフォルト値を取得")
+                .GetReferenceType(Key, "デフォルト値を取得")
                 .ToCoroutine(
                     x => Assert.That(x, Is.EqualTo("デフォルト値を取得"))
                 );

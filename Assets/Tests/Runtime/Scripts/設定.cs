@@ -54,7 +54,7 @@ namespace CAFU.KeyValueStore
         public IEnumerator A_値を設定できる()
         {
             yield return KeyValueStore
-                .Set(Key, "値を設定")
+                .SetReferenceType(Key, "値を設定")
                 .ToCoroutine();
 
             Assert.That(PlayerPrefs.GetString(Key), Is.EqualTo("値を設定"));
@@ -64,16 +64,16 @@ namespace CAFU.KeyValueStore
         public IEnumerator B_プリミティブ型の値を設定できる()
         {
             yield return KeyValueStore
-                .Set(Key + "Bool", true)
+                .SetValueType(Key + "Bool", true)
                 .ToCoroutine();
             yield return KeyValueStore
-                .Set(Key + "Int", 2)
+                .SetValueType(Key + "Int", 2)
                 .ToCoroutine();
             yield return KeyValueStore
-                .Set(Key + "Float", 100.0f)
+                .SetValueType(Key + "Float", 100.0f)
                 .ToCoroutine();
             yield return KeyValueStore
-                .Set(Key + "String", "string value")
+                .SetReferenceType(Key + "String", "string value")
                 .ToCoroutine();
 
             Assert.That(PlayerPrefs.GetInt(Key + "Bool") == 1, Is.True);
@@ -89,14 +89,14 @@ namespace CAFU.KeyValueStore
             var dateTimeNow = DateTime.Now;
 
             yield return KeyValueStore
-                .Set(Key + "Custom", customClass, Serializer.Default)
+                .SetReferenceType(Key + "Custom", customClass, Serializer.Default)
                 .ToCoroutine(
                     x =>
                     {
                     }
                 );
             yield return KeyValueStore
-                .Set(Key + "DateTime", dateTimeNow, Serializer.DateTime)
+                .SetValueType(Key + "DateTime", dateTimeNow, Serializer.DateTime)
                 .ToCoroutine();
 
             {
@@ -105,7 +105,7 @@ namespace CAFU.KeyValueStore
                 Assert.That(x.StringValue, Is.EqualTo(customClass.StringValue));
             }
             {
-                var x = Deserializer.DateTime(PlayerPrefs.GetString(Key + "DateTime"));
+                var x = Deserializer.DateTime(PlayerPrefs.GetString(Key + "DateTime")).Unwrap();
                 Assert.That(x.Year, Is.EqualTo(dateTimeNow.Year));
                 Assert.That(x.Month, Is.EqualTo(dateTimeNow.Month));
                 Assert.That(x.Day, Is.EqualTo(dateTimeNow.Day));
