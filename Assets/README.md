@@ -55,14 +55,17 @@ public class Foo
 
     public async Task Bar()
     {
-        var value = "";
+        var referenceTypeValue = "";
+        var valueTypeValue = 0;
 
         if (await KeyValueStore.Has("key"))
         {
-            value = await KeyValueStore.Get<string>("key", "default value");
+            referenceTypeValue = await KeyValueStore.GetReferenceType<string>("reference type key", "default value");
+            valueTypeValue = await KeyValueStore.GetReferenceType<int>("value type key", -1);
         }
 
-        await KeyValueStore.Set<string>("key", "value is " + value);
+        await KeyValueStore.SetReferenceType<string>("some key", $"reference type value is {referenceTypeValue} and value type value is {valueTypeValue}");
+        await KeyValueStore.SetValueType<bool>("some flag", true);
     }
 }
 ```
