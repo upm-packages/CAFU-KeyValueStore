@@ -1,11 +1,5 @@
 # Changelog
 
-## [1.1.0] - 2020-02-03
-
-### Changes
-
-* Split methods for ValueType and ReferenceType to avoid AOT compiler generation error
-
 ## [1.0.3] - 2020-02-03
 
 ### Fixes
