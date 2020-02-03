@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.3] - 2020-02-03
+
+### Fixes
+
+* Fully support IL2CPP
+
 ## [1.0.2] - 2020-02-03
 
 ### Fixes

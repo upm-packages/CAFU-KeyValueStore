@@ -2,12 +2,18 @@ using System;
 using CAFU.KeyValueStore.Data.Repository.Interface.DataStore;
 using JetBrains.Annotations;
 using UniRx.Async;
+using Zenject;
 
 namespace CAFU.KeyValueStore.Data.DataStore.Implement
 {
     [UsedImplicitly]
     internal class PlayerPrefs : IAsyncGetter, IAsyncSetter, IAsyncChecker
     {
+        [Inject]
+        internal PlayerPrefs()
+        {
+        }
+
         async UniTask<T> IAsyncGetter.GetAsync<T>(string key, T defaultValue, Func<string, T> deserializeCallback)
         {
             if (!UnityEngine.PlayerPrefs.HasKey(key))
