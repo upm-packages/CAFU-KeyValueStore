@@ -41,7 +41,12 @@ Note: `upm` command is provided by [this repository](https://github.com/upm-pack
 KeyValueStoreInstaller.Install(Container, DataStoreType.PlayerPrefs);
 ```
 
-Note: Currently the only DataStore type implemented is `PlayerPrefs`
+#### DataStore Types
+
+| Type | Description |
+| --- | --- |
+| PlayerPrefs | Using `UnityEngine.PlayerPrefs` |
+| Memory | Using `IDictionary<>` |
 
 ### Handle values
 
