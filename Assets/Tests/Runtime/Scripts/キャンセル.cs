@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Threading;
 using CAFU.KeyValueStore.Application.Interface;
-using CAFU.KeyValueStore.Data.Repository.Implement;
-using CAFU.KeyValueStore.Data.Repository.Interface.DataStore;
+using CAFU.KeyValueStore.Data.Implement.Repository;
+using CAFU.KeyValueStore.Data.Interface;
 using NSubstitute;
 using NUnit.Framework;
 using UniRx.Async;

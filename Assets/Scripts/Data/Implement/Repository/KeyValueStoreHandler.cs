@@ -1,12 +1,12 @@
 using System;
 using System.Threading;
 using CAFU.KeyValueStore.Application.Interface;
-using CAFU.KeyValueStore.Data.Repository.Interface.DataStore;
+using CAFU.KeyValueStore.Data.Interface;
 using JetBrains.Annotations;
 using UniRx.Async;
 using Zenject;
 
-namespace CAFU.KeyValueStore.Data.Repository.Implement
+namespace CAFU.KeyValueStore.Data.Implement.Repository
 {
     [UsedImplicitly]
     internal class KeyValueStoreHandler : IKeyValueStore

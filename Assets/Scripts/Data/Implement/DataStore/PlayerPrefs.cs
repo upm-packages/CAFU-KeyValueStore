@@ -1,11 +1,11 @@
 using System;
 using System.Threading;
-using CAFU.KeyValueStore.Data.Repository.Interface.DataStore;
+using CAFU.KeyValueStore.Data.Interface;
 using JetBrains.Annotations;
 using UniRx.Async;
 using Zenject;
 
-namespace CAFU.KeyValueStore.Data.DataStore.Implement
+namespace CAFU.KeyValueStore.Data.Implement.DataStore
 {
     [UsedImplicitly]
     internal class PlayerPrefs : IAsyncGetter, IAsyncSetter, IAsyncChecker
