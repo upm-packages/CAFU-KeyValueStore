@@ -41,7 +41,7 @@ namespace CAFU.KeyValueStore.Data.Repository.Implement
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            return await Checker.Has(key, cancellationToken);
+            return await Checker.HasAsync(key, cancellationToken);
         }
     }
 }

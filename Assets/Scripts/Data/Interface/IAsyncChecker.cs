@@ -5,6 +5,6 @@ namespace CAFU.KeyValueStore.Data.Repository.Interface.DataStore
 {
     internal interface IAsyncChecker
     {
-        UniTask<bool> Has(string key, CancellationToken cancellationToken = default);
+        UniTask<bool> HasAsync(string key, CancellationToken cancellationToken = default);
     }
 }

@@ -87,7 +87,7 @@ namespace CAFU.KeyValueStore.Data.DataStore.Implement
             return UniTask.CompletedTask;
         }
 
-        async UniTask<bool> IAsyncChecker.Has(string key, CancellationToken cancellationToken)
+        async UniTask<bool> IAsyncChecker.HasAsync(string key, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
