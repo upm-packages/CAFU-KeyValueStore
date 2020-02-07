@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using CAFU.KeyValueStore.Application.Interface;
 using CAFU.KeyValueStore.Data.Repository.Interface.DataStore;
 using JetBrains.Annotations;
@@ -22,19 +23,25 @@ namespace CAFU.KeyValueStore.Data.Repository.Implement
         private IAsyncSetter Setter { get; }
         private IAsyncChecker Checker { get; }
 
-        async UniTask<T> IKeyValueStore.Get<T>(string key, T defaultValue, Func<string, T> deserializeCallback)
+        async UniTask<T> IKeyValueStore.Get<T>(string key, T defaultValue, Func<string, T> deserializeCallback, CancellationToken cancellationToken)
         {
-            return await Getter.GetAsync(key, defaultValue, deserializeCallback);
+            cancellationToken.ThrowIfCancellationRequested();
+
+            return await Getter.GetAsync(key, defaultValue, deserializeCallback, cancellationToken);
         }
 
-        async UniTask IKeyValueStore.Set<T>(string key, T value, Func<T, string> serializeCallback)
+        async UniTask IKeyValueStore.Set<T>(string key, T value, Func<T, string> serializeCallback, CancellationToken cancellationToken)
         {
-            await Setter.SetAsync(key, value, serializeCallback);
+            cancellationToken.ThrowIfCancellationRequested();
+
+            await Setter.SetAsync(key, value, serializeCallback, cancellationToken);
         }
 
-        async UniTask<bool> IKeyValueStore.Has(string key)
+        async UniTask<bool> IKeyValueStore.Has(string key, CancellationToken cancellationToken)
         {
-            return await Checker.Has(key);
+            cancellationToken.ThrowIfCancellationRequested();
+
+            return await Checker.HasAsync(key, cancellationToken);
         }
     }
 }
