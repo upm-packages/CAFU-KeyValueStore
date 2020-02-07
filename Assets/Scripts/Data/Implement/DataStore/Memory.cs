@@ -22,14 +22,19 @@ namespace CAFU.KeyValueStore.Data.Implement.DataStore
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            return await UniTask.FromResult((T) Storage[key]);
+            if (await ((IAsyncChecker) this).HasAsync(key, cancellationToken))
+            {
+                return await UniTask.FromResult((T) Storage[key]);
+            }
+
+            return await UniTask.FromResult(defaultValue);
         }
 
         async UniTask IAsyncSetter.SetAsync<T>(string key, T value, Func<T, string> serializeCallback, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            Storage.Add(key, value);
+            Storage[key] = value;
 
             await UniTask.CompletedTask;
         }
