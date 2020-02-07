@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using UniRx.Async;
 
-namespace CAFU.KeyValueStore.Data.Repository.Interface.DataStore
+namespace CAFU.KeyValueStore.Data.Interface
 {
     internal interface IAsyncGetter
     {
