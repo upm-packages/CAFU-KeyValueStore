@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.2.0] - 2020-02-07
+
+### Features
+
+* Add in-memory DataStore
+
+### Changes
+
+* Follow CAFU v3.1 rules
+
+### Fixes
+
+* Route CancellationToken in asynchronous method
+
+## [1.1.0] - 2020-02-03
+
+### Fixes
+
+* Fully support IL2CPP
+
 ## [1.0.3] - 2020-02-03
 
 ### Fixes

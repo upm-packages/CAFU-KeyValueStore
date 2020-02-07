@@ -1,10 +1,11 @@
 using System;
-using CAFU.KeyValueStore.Data.Repository.Interface.DataStore;
+using System.Threading;
+using CAFU.KeyValueStore.Data.Interface;
 using JetBrains.Annotations;
 using UniRx.Async;
 using Zenject;
 
-namespace CAFU.KeyValueStore.Data.DataStore.Implement
+namespace CAFU.KeyValueStore.Data.Implement.DataStore
 {
     [UsedImplicitly]
     internal class PlayerPrefs : IAsyncGetter, IAsyncSetter, IAsyncChecker
@@ -14,8 +15,10 @@ namespace CAFU.KeyValueStore.Data.DataStore.Implement
         {
         }
 
-        async UniTask<T> IAsyncGetter.GetAsync<T>(string key, T defaultValue, Func<string, T> deserializeCallback)
+        async UniTask<T> IAsyncGetter.GetAsync<T>(string key, T defaultValue, Func<string, T> deserializeCallback, CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             if (!UnityEngine.PlayerPrefs.HasKey(key))
             {
                 return await UniTask.FromResult(defaultValue);
@@ -51,8 +54,10 @@ namespace CAFU.KeyValueStore.Data.DataStore.Implement
             return await UniTask.FromResult(result);
         }
 
-        UniTask IAsyncSetter.SetAsync<T>(string key, T value, Func<T, string> serializeCallback)
+        UniTask IAsyncSetter.SetAsync<T>(string key, T value, Func<T, string> serializeCallback, CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             switch (value)
             {
                 case bool v:
@@ -82,8 +87,10 @@ namespace CAFU.KeyValueStore.Data.DataStore.Implement
             return UniTask.CompletedTask;
         }
 
-        async UniTask<bool> IAsyncChecker.Has(string key)
+        async UniTask<bool> IAsyncChecker.HasAsync(string key, CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             return await UniTask.FromResult(UnityEngine.PlayerPrefs.HasKey(key));
         }
     }
