@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.3.0] - 2020-03-04
+
+Add extension methods to calculate
+
+### Features
+
+* Add extension methods to calculate `int` or `float`.
+    * `Add`, `Subtract`, `Multiply`, `Divide`
+    * `Increment`, `Decrement` for `int`
+
 ## [1.2.0] - 2020-02-07
 
 ### Features
