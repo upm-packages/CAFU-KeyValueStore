@@ -1,11 +1,12 @@
 {
     "name": "CAFU.KeyValueStore.Tests.Runtime",
+    "rootNamespace": "",
     "references": [
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner",
-        "UniRx.Async",
-        "Zenject",
-        "CAFU.KeyValueStore"
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:19cd823f576ba4f3bab7b091ea4dd19b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -14,7 +15,7 @@
     "precompiledReferences": [
         "nunit.framework.dll",
         "Zenject-usage.dll",
-        "Zenject-TestFramework.dll",
+        "Zenject-TestFramework-usage.dll",
         "NSubstitute.dll"
     ],
     "autoReferenced": false,

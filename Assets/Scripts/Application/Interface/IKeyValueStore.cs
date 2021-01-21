@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
-using UniRx.Async;
 
 namespace CAFU.KeyValueStore.Application.Interface
 {
