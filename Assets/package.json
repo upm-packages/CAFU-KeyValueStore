@@ -13,9 +13,7 @@
   "keywords": [],
   "category": "",
   "dependencies": {
-    "jp.cysharp.unirx": "7.1.0",
-    "jp.cysharp.unitask": "1.0.0",
-    "com.stevevermeulen.extenject": "9.1.0-3"
+    "com.stevevermeulen.extenject": "9.1.3"
   },
   "repository": {
     "type": "git",
