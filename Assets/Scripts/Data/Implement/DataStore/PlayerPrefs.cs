@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
 using CAFU.KeyValueStore.Data.Interface;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
-using UniRx.Async;
 using Zenject;
 
 namespace CAFU.KeyValueStore.Data.Implement.DataStore

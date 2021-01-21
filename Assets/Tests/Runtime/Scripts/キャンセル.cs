@@ -3,9 +3,9 @@ using System.Threading;
 using CAFU.KeyValueStore.Application.Interface;
 using CAFU.KeyValueStore.Data.Implement.Repository;
 using CAFU.KeyValueStore.Data.Interface;
+using Cysharp.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
-using UniRx.Async;
 using UnityEngine.TestTools;
 using Zenject;
 
